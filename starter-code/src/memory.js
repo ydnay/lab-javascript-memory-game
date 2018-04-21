@@ -6,13 +6,13 @@ let MemoryGame = function (cards) {
 };
 
 MemoryGame.prototype.shuffleCard = function (cardsArr) {
-  let myCardsArr = cardsArr;
-  let shuffledArr = [];
-  while (myCardsArr.length > 0) {
-    let randomCard = myCardsArr[Math.floor(Math.random() * myCardsArr.length)];
-    let cardIndex = myCardsArr.indexOf(randomCard);
-    shuffledArr.push(randomCard);
-    myCardsArr.splice(cardIndex, 1);
+  let myCardsArr = cardsArr; // copied the array parameter
+  let shuffledArr = []; 
+  while (myCardsArr.length > 0) { 
+    let randomCard = myCardsArr[Math.floor(Math.random() * myCardsArr.length)]; // picks a random card
+    let cardIndex = myCardsArr.indexOf(randomCard); // gets the index of the random card
+    shuffledArr.push(randomCard); 
+    myCardsArr.splice(cardIndex, 1); // removes the picked card from the remaining cards array
   }
 
   return shuffledArr;
@@ -29,6 +29,11 @@ MemoryGame.prototype.checkIfPair = function (firstCard, secondCard) {
   return res;
 }
 
-// MemoryGame.prototype.finished = function () {
+MemoryGame.prototype.finished = function () {
+  let res = false;
+  if (this.pairsGuessed === 12) {
+    return true;
+  }
 
-// };
+  return res;
+};
